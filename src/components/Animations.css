@@ -1,0 +1,102 @@
+/* Success Animation Styles */
+.success-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.success-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-xl);
+  pointer-events: auto;
+}
+
+.success-message {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Error Animation Styles */
+.error-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  text-align: center;
+}
+
+.error-animation {
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.error-retry-button {
+  margin-top: 10px;
+}
+
+/* Empty State Animation Styles */
+.empty-state-animation {
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+}
+
+/* Lottie Wrapper Styles */
+.lottie-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lottie-wrapper .dotlottie-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .success-animation-container {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .success-message {
+    font-size: 16px;
+  }
+
+  .error-message {
+    font-size: 16px;
+  }
+}

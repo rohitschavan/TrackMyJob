@@ -1,0 +1,52 @@
+:root {
+  /* Dark Theme Colors */
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #252525;
+  --bg-card: #1e1e1e;
+  --bg-hover: #2a2a2a;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #808080;
+  
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --accent-hover: #7c3aed;
+  
+  --border-color: #2d2d2d;
+  --border-hover: #3d3d3d;
+  
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* Status Colors */
+  --status-applied: #3b82f6;
+  --status-interview: #f59e0b;
+  --status-offer: #10b981;
+  --status-rejected: #ef4444;
+  --status-withdrawn: #6b7280;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-card: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  transition: background-color var(--transition-base), 
+              color var(--transition-base),
+              border-color var(--transition-base);
+}

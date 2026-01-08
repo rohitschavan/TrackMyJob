@@ -1,0 +1,339 @@
+.detail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detail-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.detail-company-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.detail-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: var(--bg-tertiary);
+  padding: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.detail-logo-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: var(--shadow-md);
+}
+
+.detail-header h2 {
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.detail-position {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.detail-body {
+  padding: 28px;
+}
+
+.detail-section {
+  margin-bottom: 28px;
+}
+
+.status-badge-large {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 24px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.5px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-item label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.detail-item p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.detail-item a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.detail-item a:hover {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+}
+
+.notes-text {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.third-party-section {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 2px dashed var(--accent-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.third-party-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  pointer-events: none;
+}
+
+.third-party-section h3 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-fetch-salary {
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 1;
+}
+
+.btn-fetch-salary:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-fetch-salary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.salary-info {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+  position: relative;
+  z-index: 1;
+}
+
+.salary-info h4 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.salary-info p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.salary-info .note {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(251, 191, 36, 0.1);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--warning);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  padding: 24px 28px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.detail-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition-base);
+}
+
+.btn-edit {
+  background: var(--warning);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-edit:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-delete {
+  background: var(--error);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-close {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-close:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+  }
+
+  .detail-actions button {
+    width: 100%;
+  }
+}
