@@ -1,47 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import React, { useState } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import './Lottie.css'
+const LOTTIES = [
+  "https://lottie.host/10f90267-8137-4b72-aa7b-93bb5e474cc1/SSQPXF1KtV.lottie",
+  "https://lottie.host/56468207-696b-4d07-9408-f8e7c2d626f2/EzBd38sBxA.lottie"
+];
 
-const LottieAnimation = ({ 
-  message = null, // Set to null by default to hide text
-  src = "https://lottie.host/10f90267-8137-4b72-aa7b-93bb5e474cc1/SSQPXF1KtV.lottie",
-  loop = true,
-  autoplay = true,
-  minDisplayTime = 2500 // Minimum display time in milliseconds (2.5 seconds)
-}) => {
-  const [show, setShow] = useState(true);
-  const [startTime] = useState(Date.now());
+const QUOTES = [
+  "Convincing the internet to do its job…",
+  "Good things take time. Great things buffer.",
+  "Please wait. This moment is loading.",
+  "Patience detected. Respect increased.",
+  "Almost there… probably.",
+  "Turning coffee into code ☕",
+];
 
-  useEffect(() => {
-    // Ensure minimum display time
-    const elapsed = Date.now() - startTime;
-    const remainingTime = Math.max(0, minDisplayTime - elapsed);
-    
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, remainingTime);
+const LottieAnimation = () => {
+  const [animationIndex] = useState(() =>
+    Math.floor(Math.random() * LOTTIES.length)
+  );
 
-    return () => clearTimeout(timer);
-  }, [startTime, minDisplayTime]);
-
-  if (!show) return null;
+  const [quote] = useState(() =>
+    QUOTES[Math.floor(Math.random() * QUOTES.length)]
+  );
 
   return (
-    <div className="lottie-fullscreen">
-      <div className="lottie-wrapper">
-        <div className="lottie-animation-container">
-          <DotLottieReact
-            src={src}
-            loop={loop}
-            autoplay={autoplay}
-            className="lottie-animation"
-          />
-        </div>
-        {message && (
-          <div className="lottie-message">
-            <p>{message}</p>
-          </div>
-        )}
-      </div>
+    <div className="loader-screen">
+      <DotLottieReact
+        key={animationIndex}
+        src={LOTTIES[animationIndex]}
+        autoplay
+        loop
+        className="loader-lottie"
+      />
+
+      <h2 className="clip-text">
+        <span>{quote}</span>
+      </h2>
     </div>
   );
 };

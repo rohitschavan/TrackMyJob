@@ -1,0 +1,99 @@
+/* Fullscreen loader — Light Theme */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    #f8fafc,
+    #eef2ff
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9999;
+}
+
+/* Lottie */
+.loader-lottie {
+  width: 220px;
+  height: 220px;
+}
+
+/* Text container */
+.clip-text {
+  position: relative;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Animated text */
+.clip-text span {
+  display: inline-block;
+
+  background: linear-gradient(
+    120deg,
+    #2563eb,
+    #7c3aed,
+    #db2777
+  );
+  background-size: 300% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    textReveal 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite,
+    gradientFlow 6s ease-in-out infinite,
+    floatText 5s ease-in-out infinite;
+}
+
+/* 🌊 Ultra-smooth clip-path reveal */
+@keyframes textReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  18% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  82% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+  }
+}
+
+/* ✨ Soft gradient motion */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+/* 🫧 Gentle floating (subtle, premium) */
+@keyframes floatText {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
