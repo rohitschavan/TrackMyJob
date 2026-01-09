@@ -52,8 +52,8 @@
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
-  color: white;
+  background: linear-gradient(  180deg,  rgba(99,102,241,0.08) 0%,  rgba(255,255,255,0.95) 70%);
+  color: rgb(0, 0, 0);
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -242,7 +242,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.btn-edit {
+/* .btn-edit {
   background: var(--warning);
   color: white;
 }
@@ -256,7 +256,7 @@
 .btn-delete {
   background: var(--error);
   color: white;
-}
+} */
 
 .btn-delete:hover {
   background: #dc2626;

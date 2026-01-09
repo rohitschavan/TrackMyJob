@@ -1,0 +1,146 @@
+.card-wrapper {
+  position: relative;
+  width: 360px;
+  perspective: 1000px;
+}
+
+/* Soft pastel glow */
+.card-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.35),
+    rgba(168, 85, 247, 0.35),
+    rgba(236, 72, 153, 0.35)
+  );
+  opacity: 0;
+  filter: blur(24px);
+  transition: opacity 0.5s ease;
+}
+
+.card-wrapper:hover .card-glow {
+  opacity: 0.45;
+}
+
+/* Card surface */
+.card {
+  position: relative;
+  z-index: 2;
+  border-radius: 18px;
+  padding: 18px;
+
+  /* 👇 FIX */
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  height: 46px;
+  width: 46px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.logo.placeholder {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.company h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.company p {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Status */
+.status {
+  margin-left: auto;
+  padding: 5px 12px;
+  font-size: 12px;
+  border-radius: 999px;
+  color: white;
+}
+
+/* Body */
+.card-body {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #475569;
+
+  /* 👇 prevents tall cards */
+  max-height: 48px;
+  overflow: hidden;
+}
+
+/* Actions */
+.actions {
+  margin-top: auto; /* 👈 key line */
+  padding-top: 16px;
+
+  display: flex;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.35s ease;
+}
+
+.card-wrapper:hover .actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.actions button {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: white;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.actions button:hover {
+  background: #f1f5f9;
+}
+
+.actions .danger {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+.actions .danger:hover {
+  background: rgba(220, 38, 38, 0.08);
+}

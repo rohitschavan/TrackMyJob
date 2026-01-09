@@ -36,7 +36,7 @@ const Dashboard = () => {
       
       // Calculate remaining time to meet 2500ms minimum
       const elapsed = Date.now() - loadStartTime;
-      const remainingTime = Math.max(0, 2500 - elapsed);
+      const remainingTime = Math.max(0, 1500 - elapsed);
       
       await new Promise(resolve => setTimeout(resolve, remainingTime));
       
@@ -49,7 +49,7 @@ const Dashboard = () => {
   };
 
   if (loading) {
-    return <LottieAnimation minDisplayTime={2500} />;
+    return <LottieAnimation minDisplayTime={1500} />;
   }
 
   if (!stats) {
@@ -216,13 +216,13 @@ const Dashboard = () => {
           </motion.div>
         )}
       </div>
-
+{/* 
       <div className="dashboard-note">
         <p>
           <strong>Note:</strong> All visualizations reflect real-time data from your database.
           Changes made through CRUD operations will be reflected in these charts immediately.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

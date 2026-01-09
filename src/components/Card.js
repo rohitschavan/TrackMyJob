@@ -1,89 +1,81 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import "./Card.css";
 
-const Card = ({
-  app,
-  logoUrl,
-  onView,
-  onEdit,
-  onDelete,
-  getStatusColor,
-}) => {
+const Card = ({ app, logoUrl, onView, onEdit, onDelete, getStatusColor }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-50, 50], [8, -8]);
+  const rotateY = useTransform(x, [-50, 50], [-8, 8]);
+
+  const handleMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
-      whileHover="hover"
-      initial="rest"
-      animate="rest"
-      variants={{
-        rest: { scale: 1 },
-        hover: { scale: 1.03 },
-      }}
-      transition={{
-        duration: 0.8,
-        ease: "backInOut",
-      }}
-      className="application-card"
+      className="card-wrapper"
+      onMouseMove={handleMove}
+      onMouseLeave={reset}
+      style={{ rotateX, rotateY }}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 200, damping: 18 }}
     >
-      {/* Inner content squish */}
-      <motion.div
-        variants={{
-          rest: { scale: 1 },
-          hover: { scale: 1.02 },
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "backInOut",
-        }}
-      >
+      <div className="card-glow" />
+
+      <div className="card">
         {/* Header */}
         <div className="card-header">
           {logoUrl ? (
-            <img
-              src={logoUrl}
-              alt={app.company_name}
-              className="company-logo"
-            />
+            <img src={logoUrl} className="logo" />
           ) : (
-            <div className="company-logo-placeholder">
-              {app.company_name.charAt(0).toUpperCase()}
+            <div className="logo placeholder">
+              {app.company_name[0]}
             </div>
           )}
 
-          <div className="company-info">
+          <div className="company">
             <h3>{app.company_name}</h3>
-            <p className="position">{app.position}</p>
+            <p>{app.position}</p>
           </div>
+
+          <motion.span
+            className="status"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            style={{ backgroundColor: getStatusColor(app.status) }}
+          >
+            {app.status}
+          </motion.span>
         </div>
 
         {/* Body */}
         <div className="card-body">
-          <span
-            className="status-badge"
-            style={{ backgroundColor: getStatusColor(app.status) }}
-          >
-            {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
-          </span>
-
-          {app.location && <p className="location">📍 {app.location}</p>}
+          {app.location && <p>📍 {app.location}</p>}
           {app.application_date && (
-            <p className="date">
-              Applied: {new Date(app.application_date).toLocaleDateString()}
+            <p>
+              Applied ·{" "}
+              {new Date(app.application_date).toLocaleDateString()}
             </p>
           )}
         </div>
 
         {/* Actions */}
-        <div className="card-actions">
-          <button onClick={() => onView(app)} className="btn-view">
-            View
-          </button>
-          <button onClick={() => onEdit(app)} className="btn-edit">
-            Edit
-          </button>
-          <button onClick={() => onDelete(app.id)} className="btn-delete">
+        <div className="actions">
+          <button onClick={() => onView(app)}>View</button>
+          <button onClick={() => onEdit(app)}>Edit</button>
+          <button className="danger" onClick={() => onDelete(app.id)}>
             Delete
           </button>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

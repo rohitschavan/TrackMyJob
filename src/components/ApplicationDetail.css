@@ -289,16 +289,19 @@
 }
 
 .btn-edit {
-  background: var(--warning);
-  color: white;
-  box-shadow: var(--shadow-md);
+/* Blue Gray/700 */
+background: #3F525B;
+/* Light/Shadow-6 */
+box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16);
+border-radius: 16px;
+color: white;
 }
 
-.btn-edit:hover {
+/* .btn-edit:hover {
   background: #d97706;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-}
+} */
 
 .btn-delete {
   background: var(--error);
@@ -313,9 +316,18 @@
 }
 
 .btn-close {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  background: linear-gradient(  180deg,  rgba(99,102,241,0.08) 0%,  rgba(255,255,255,0.95) 70%);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-close:hover {
@@ -336,4 +348,112 @@
   .detail-actions button {
     width: 100%;
   }
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+.detail-header-actions {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.icon-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+/* Color hints */
+.icon-btn.edit {
+  color: #2563eb; /* blue */
+}
+
+.icon-btn.delete {
+  color: #dc2626; /* red */
+}
+
+.icon-btn.close {
+  color: #374151; /* gray */
+}
+.job-url {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #2563eb;
+  text-decoration: underline;
+}
+.detail-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Base */
+.icon-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 19px;
+  transition: all 0.25s ease;
+}
+
+/* Edit */
+.icon-btn.edit {
+  color: #2563eb;
+}
+.icon-btn.edit:hover {
+  box-shadow:
+    0 14px 30px rgba(37, 99, 235, 0.25);
+}
+
+/* Delete */
+.icon-btn.delete {
+  color: #dc2626;
+}
+.icon-btn.delete:hover {
+  box-shadow:
+    0 14px 30px rgba(220, 38, 38, 0.25);
+}
+
+/* Close */
+.icon-btn.close {
+  color: #374151;
+}
+.icon-btn.close:hover {
+  box-shadow:
+    0 14px 30px rgba(55, 65, 81, 0.25);
 }

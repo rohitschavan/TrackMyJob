@@ -36,7 +36,7 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-primary:#2563eb;
   --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   
   /* Transitions */

@@ -29,7 +29,7 @@ const ApplicationList = ({ onRefresh }) => {
 
       // Calculate remaining time to meet 2500ms minimum
       const elapsed = Date.now() - loadStartTime;
-      const remainingTime = Math.max(0, 2500 - elapsed);
+      const remainingTime = Math.max(0, 1500 - elapsed);
 
       await new Promise(resolve => setTimeout(resolve, remainingTime));
 
@@ -112,7 +112,7 @@ const ApplicationList = ({ onRefresh }) => {
   };
 
   if (loading) {
-    return <LottieAnimation minDisplayTime={2500} />;
+    return <LottieAnimation minDisplayTime={1500} />;
   }
 
   if (showForm) {

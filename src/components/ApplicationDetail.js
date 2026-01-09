@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getSalaryInfo } from '../services/api';
 import './ApplicationDetail.css';
-
+import { FiEdit2, FiTrash2, FiX } from 'react-icons/fi';
 const ApplicationDetail = ({ application, onClose, onEdit, onDelete, logoUrl }) => {
   const [salaryInfo, setSalaryInfo] = useState(null);
   const [loadingSalary, setLoadingSalary] = useState(false);
@@ -32,14 +32,14 @@ const ApplicationDetail = ({ application, onClose, onEdit, onDelete, logoUrl }) 
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="detail-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
-      <motion.div 
+      <motion.div
         className="detail-modal"
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
@@ -121,7 +121,15 @@ const ApplicationDetail = ({ application, onClose, onEdit, onDelete, logoUrl }) 
             {application.job_url && (
               <div className="detail-item full-width">
                 <label>Job URL</label>
-                <p><a href={application.job_url} target="_blank" rel="noopener noreferrer">{application.job_url}</a></p>
+                <a
+                  href={application.job_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="job-url"
+                  title={application.job_url}  // shows full URL on hover
+                >
+                  {application.job_url}
+                </a>
               </div>
             )}
 
@@ -163,11 +171,38 @@ const ApplicationDetail = ({ application, onClose, onEdit, onDelete, logoUrl }) 
           </div>
         </div>
 
-        <div className="detail-actions">
-          <button onClick={onEdit} className="btn-edit">Edit</button>
-          <button onClick={onDelete} className="btn-delete">Delete</button>
-          <button onClick={onClose} className="btn-close">Close</button>
-        </div>
+        {/* <div className="detail-header-actions">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="icon-btn edit"
+            onClick={onEdit}
+            title="Edit"
+          >
+            <FiEdit2 />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="icon-btn delete"
+            onClick={onDelete}
+            title="Delete"
+          >
+            <FiTrash2 />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
+            className="icon-btn close"
+            onClick={onClose}
+            title="Close"
+          >
+            <FiX />
+          </motion.button>
+        </div> */}
+
       </motion.div>
     </motion.div>
   );
