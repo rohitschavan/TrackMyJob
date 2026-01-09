@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getSalaryInfo } from '../services/api';
 import './ApplicationDetail.css';
-import { FiEdit2, FiTrash2, FiX } from 'react-icons/fi';
+
 const ApplicationDetail = ({ application, onClose, onEdit, onDelete, logoUrl }) => {
   const [salaryInfo, setSalaryInfo] = useState(null);
   const [loadingSalary, setLoadingSalary] = useState(false);

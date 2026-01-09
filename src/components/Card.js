@@ -34,7 +34,7 @@ const Card = ({ app, logoUrl, onView, onEdit, onDelete, getStatusColor }) => {
         {/* Header */}
         <div className="card-header">
           {logoUrl ? (
-            <img src={logoUrl} className="logo" />
+            <img src={logoUrl} className="logo" alt="Company logo" />
           ) : (
             <div className="logo placeholder">
               {app.company_name[0]}

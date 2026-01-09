@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { getApplications, deleteApplication, getCompanyLogo } from '../services/api';
 import ApplicationForm from './ApplicationForm';
 import ApplicationDetail from './ApplicationDetail';
