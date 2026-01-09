@@ -36,26 +36,15 @@ const ApplicationList = ({ onRefresh }) => {
       setApplications(data);
 
       // Pre-fetch logos for applications
-      data.forEach(async (app) => {
-        setLogoCache(prev => {
-          if (!prev[app.company_name]) {
-            // Fetch logo asynchronously
-            getCompanyLogo(app.company_name)
-              .then(logoData => {
-                if (logoData.logo_url) {
-                  setLogoCache(current => ({
-                    ...current,
-                    [app.company_name]: logoData.logo_url
-                  }));
-                }
-              })
-              .catch(error => {
-                console.log('Logo not available for', app.company_name);
-              });
-          }
-          return prev;
-        });
-      });
+      const logoMap = {};
+
+data.forEach((app) => {
+  if (!logoMap[app.company_name]) {
+    logoMap[app.company_name] = getCompanyLogo(app.company_name);
+  }
+});
+
+setLogoCache(logoMap);
     } catch (error) {
       console.error('Error loading applications:', error);
       alert('Failed to load applications');
