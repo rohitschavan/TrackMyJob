@@ -46,7 +46,7 @@ export const getDashboardStats = async () => {
 export const getCompanyLogo = (companyName) => {
   if (!companyName) return null;
 
-  const token = import.meta.env.VITE_LOGO_DEV_TOKEN;
+  const token = import.meta.env.VITE_LOGO_DEV_TOKEN || 'pk_FV-3WUzfQJ2KRHpcv4wMnA';
 
   const domain = companyName
     .toLowerCase()
