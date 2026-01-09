@@ -44,9 +44,37 @@ export const getDashboardStats = async () => {
 
 // Third-party API integrations
 export const getCompanyLogo = async (companyName) => {
-  const response = await api.get(`/api/company-logo/${encodeURIComponent(companyName)}`);
-  return response.data;
+  try {
+    if (!companyName) return null;
+
+    const token = import.meta.env.VITE_LOGO_DEV_TOKEN;
+
+    const domain = companyName
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .replace(/[.,]/g, "");
+
+    const logoUrl = `https://img.logo.dev/${domain}.com?token=${token}`;
+
+    // Optional: lightweight validation request
+    await fetch(logoUrl, { method: "HEAD" });
+
+    return {
+      companyName,
+      logoUrl,
+      source: "logo.dev",
+      status: "success",
+    };
+  } catch (error) {
+    return {
+      companyName,
+      logoUrl: null,
+      source: "logo.dev",
+      status: "error",
+    };
+  }
 };
+
 
 export const getSalaryInfo = async (applicationId) => {
   const response = await api.get(`/api/applications/${applicationId}/salary-info`);
