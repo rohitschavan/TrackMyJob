@@ -1,6 +1,6 @@
 # Job Application Tracker - Frontend
 
-React frontend for the Job Application Tracker application.
+React frontend for the Job Application Tracker application
 
 ## Quick Start
 
